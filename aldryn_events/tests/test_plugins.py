@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import datetime
 from cms import api
@@ -140,7 +140,7 @@ class EventConfigPlaceholdersTestCase(EventBaseTestCase):
                 self.assertIn(response, text)
 
             # make sure other namespace plugins are not leaked
-            other_configs = [config for config in plugins_content.keys()
+            other_configs = [config for config in list(plugins_content.keys())
                              if config is not cfg]
             all_other_namespace_plugins_text = [
                 text for other_config in other_configs

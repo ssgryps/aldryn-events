@@ -95,11 +95,11 @@ class EventListView(AppConfigMixin, NavigationMixin, ListView):
 
         if year or month or day:
             if year and month and day:
-                year, month, day = map(int, [year, month, day])
+                year, month, day = list(map(int, [year, month, day]))
                 first_date = last_date = date(year, month, day)
 
             elif year and month:
-                year, month = map(int, [year, month])
+                year, month = list(map(int, [year, month]))
                 first_date = date(year, month, 1)
                 last_date = first_date + relativedelta(months=1, days=-1)
 
@@ -136,8 +136,8 @@ class EventListView(AppConfigMixin, NavigationMixin, ListView):
         def make_outdated(obj):
             obj.is_outdated = True
             return obj
-        object_list = list(chain(object_list, map(make_outdated,
-                                                  self.archive_qs)))
+        object_list = list(chain(object_list, list(map(make_outdated,
+                                                  self.archive_qs))))
         kwargs['object_list'] = object_list
 
         return super(EventListView, self).get_context_data(**kwargs)

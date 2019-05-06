@@ -20,7 +20,7 @@ from django.conf import settings
 
 def build_months(year, is_archive_view=False):
     months = OrderedDict()
-    month_numbers = range(1, 12 + 1)
+    month_numbers = list(range(1, 12 + 1))
 
     if is_archive_view:
         month_numbers = list(reversed(month_numbers))
@@ -75,9 +75,9 @@ def build_events_by_year(events, **config):
             events_by_year[year]['months'][event.start_date.month]['events']
             .append(event)
         )
-    flattened_events_by_year = events_by_year.values()
+    flattened_events_by_year = list(events_by_year.values())
     for year in flattened_events_by_year:
-        year['months'] = year['months'].values()
+        year['months'] = list(year['months'].values())
         year['event_count'] = 0
         for month in year['months']:
             month['event_count'] = len(month['events'])
@@ -109,7 +109,7 @@ def send_user_confirmation_email(registration, language):
     ctx = {
         'event_name': event.title,
         'first_name': registration.first_name,
-        'event_url': u"http://%s%s" % (
+        'event_url': "http://%s%s" % (
             Site.objects.get_current(), event.get_absolute_url()
         ),
     }
@@ -130,10 +130,10 @@ def send_manager_confirmation_email(registration, language, emails):
     ctx = {
         'event_name': event.title,
         'first_name': registration.first_name,
-        'event_url': u"http://%s%s" % (
+        'event_url': "http://%s%s" % (
             Site.objects.get_current(), event.get_absolute_url()
         ),
-        'registration_admin_url': u"http://%s%s" % (
+        'registration_admin_url': "http://%s%s" % (
             Site.objects.get_current(),
             reverse('admin:aldryn_events_registration_change',
                     args=[str(registration.pk)])

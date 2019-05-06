@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import datetime
 
@@ -163,7 +163,7 @@ class TestEventViews(EventBaseTestCase):
     def test_event_list_view_returns_200(self):
         url = reverse("{0}:events_list".format(self.app_config.namespace))
         response = self.client.get(url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_event_list_by_day_past_event_1_day_long(self):
         """
@@ -228,7 +228,7 @@ class TestEventViews(EventBaseTestCase):
             })
         url = event.get_absolute_url(language="en")
         response = self.client.get(url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_list_view_by_day_output(self):
         # prepare events
@@ -317,7 +317,7 @@ class TestEventViews(EventBaseTestCase):
         response2 = self.client.get(view_url2)
         # shouldn't contain any of the above
         self.response_not_contains(
-            response2, range(len(events_list)), events_list, events_urls)
+            response2, list(range(len(events_list))), events_list, events_urls)
 
         response3 = self.client.get(view_url3)
         # should not contain events with no end

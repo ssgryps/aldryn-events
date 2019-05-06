@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django import forms
 from django.conf import settings
@@ -54,7 +54,7 @@ class EventAdminForm(TranslatableModelForm):
         now = timezone.now()
         help_text = _('Acceptable Formats: %(format_list)s')
 
-        for key, field in self.fields.items():
+        for key, field in list(self.fields.items()):
             if (isinstance(field, DateField) or isinstance(field, TimeField) or
                     isinstance(field, DateTimeField)):
                 format_list = ', '.join(

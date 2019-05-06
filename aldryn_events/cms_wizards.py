@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -126,10 +126,10 @@ class CreateEventForm(BaseFormMixin, TranslatableModelForm):
 
 
 event_wizard = EventWizard(
-    title=_(u"New Event"),
+    title=_("New Event"),
     weight=500,
     form=CreateEventForm,
-    description=_(u"Create a new Event.")
+    description=_("Create a new Event.")
 )
 
 wizard_pool.register(event_wizard)

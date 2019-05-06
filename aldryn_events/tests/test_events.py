@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from collections import namedtuple
 import six
@@ -85,7 +85,7 @@ class EventTestCase(EventBaseTestCase):
 
     def test_clean_with_allowed_dates_do_not_fail(self):
         failures = []
-        for key, dates in self.dates.items():
+        for key, dates in list(self.dates.items()):
             if not key.should_pass:
                 continue
             event_data = self.make_default_values_with_new_dates(dates)
@@ -107,7 +107,7 @@ class EventTestCase(EventBaseTestCase):
 
     def test_clean_with_not_allowed_dates_raises_validation_error(self):
         failures = []
-        for key, dates in self.dates.items():
+        for key, dates in list(self.dates.items()):
             if key.should_pass:
                 continue
             event_data = self.make_default_values_with_new_dates(dates)
@@ -192,7 +192,7 @@ class EventTestCase(EventBaseTestCase):
 
     def test_specific_language_characters_in_title(self):
 
-        test_title = u"Sprachgefühl"
+        test_title = "Sprachgefühl"
         with force_language('de'):
             event = Event.objects.create(
                 title=test_title, slug='sprachgefuhl',

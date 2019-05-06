@@ -87,7 +87,7 @@ def build_calendar_context(year, month, language, namespace, site_id=None):
         'current_date': current_date,
         'last_month': current_date - timedelta(days=1),
         'next_month': (current_date + timedelta(days=31)).replace(day=1),
-        'label': u"{0} {1}".format(MONTHS.get(int(month)), year),
+        'label': "{0} {1}".format(MONTHS.get(int(month)), year),
         'namespace': namespace
     }
 
@@ -95,7 +95,7 @@ def build_calendar_context(year, month, language, namespace, site_id=None):
     # TODO: can configure css classes in appconfig ;)
     _calendar = build_calendar(year, month, language, namespace, site_id)
     calendar_list = []
-    for day, events in _calendar.items():
+    for day, events in list(_calendar.items()):
         css = []
         if events:
             for event in events:

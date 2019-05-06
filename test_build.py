@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import print_function, unicode_literals
+
 
 import os
 import socket
@@ -18,7 +18,7 @@ except ImportError:
     enchant = None
 
 ROOT_DIR = os.path.dirname(aldryn_events.__file__)
-DOCS_DIR = os.path.abspath(os.path.join(ROOT_DIR, u'..', u'docs'))
+DOCS_DIR = os.path.abspath(os.path.join(ROOT_DIR, '..', 'docs'))
 
 
 def has_no_internet():

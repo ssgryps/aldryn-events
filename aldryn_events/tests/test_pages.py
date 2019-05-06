@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import mock
 
@@ -368,7 +368,7 @@ class RegistrationTestCase(EventBaseTestCase):
 
         # test if registration is really on db
         registration = event.registration_set.get()
-        for k, v in data.items():
+        for k, v in list(data.items()):
             self.assertEqual(getattr(registration, k), v)
 
     @mock.patch('aldryn_events.models.timezone')

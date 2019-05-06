@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Aldryn Events'
-copyright = u'2015, Divio AG'
+project = 'Aldryn Events'
+copyright = '2015, Divio AG'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -208,8 +208,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [(
-    'index', 'AldrynEvents.tex', u'Aldryn Events Documentation',
-    u'Divio AG', 'manual'
+    'index', 'AldrynEvents.tex', 'Aldryn Events Documentation',
+    'Divio AG', 'manual'
 )]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -238,8 +238,8 @@ latex_documents = [(
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'aldrynevents', u'Aldryn Events Documentation',
-     [u'Divio AG'], 1)
+    ('index', 'aldrynevents', 'Aldryn Events Documentation',
+     ['Divio AG'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -252,8 +252,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [(
-    'index', 'AldrynEvents', u'Aldryn Events Documentation',
-    u'Divio AG', 'AldrynEvents', 'One line description of project.',
+    'index', 'AldrynEvents', 'Aldryn Events Documentation',
+    'Divio AG', 'AldrynEvents', 'One line description of project.',
     'Miscellaneous'
 )]
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
+
 
 from distutils.version import LooseVersion
 from cms import __version__ as cms_string_version
@@ -44,19 +44,19 @@ HELPER_SETTINGS = {
     'PARLER_LANGUAGES': {
         1: [
             {
-                'code': u'en',
-                'fallbacks': [u'de'],
+                'code': 'en',
+                'fallbacks': ['de'],
                 'hide_untranslated': False
             },
             {
-                'code': u'de',
-                'fallbacks': [u'en'],
+                'code': 'de',
+                'fallbacks': ['en'],
                 'hide_untranslated': False
             }
         ],
         'default': {
-            'code': u'en',
-            'fallbacks': [u'en'],
+            'code': 'en',
+            'fallbacks': ['en'],
             'hide_untranslated': False}
     },
     'PARLER_ENABLE_CACHING': False,
@@ -71,7 +71,7 @@ HELPER_SETTINGS = {
             {
                 'public': True,
                 'code': 'en',
-                'fallbacks': [u'de'],
+                'fallbacks': ['de'],
                 'hide_untranslated': False,
                 'name': gettext('en'),
                 'redirect_on_fallback': True,
@@ -79,7 +79,7 @@ HELPER_SETTINGS = {
             {
                 'public': True,
                 'code': 'de',
-                'fallbacks': [u'en'],
+                'fallbacks': ['en'],
                 'hide_untranslated': False,
                 'name': gettext('de'),
                 'redirect_on_fallback': True,
