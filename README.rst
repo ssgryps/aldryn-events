@@ -1,8 +1,10 @@
 **Deprecated**
 
-This project is no longer supported.
+This project is no longer supported by Divio.
+But main code is supported by `SoftFormance <https://softformance.com/>`_ for supporting future releases.
 
-Divio will undertake no further development or maintenance of this project. If you are interested in  taking responsibility for this project as its maintainer, please contact us via www.divio.com.
+Divio will undertake no further development or maintenance of this project.
+If you are interested in  taking responsibility for this project as its maintainer, please contact us via www.divio.com.
 
 
 ############################
@@ -34,9 +36,9 @@ request, please review our `guidelines for Aldryn addons <http://docs.aldryn.com
 Requirements
 ************
 
-* Python 2.7, 3.4, 3.5
-* django CMS 3.4 or later
-* Django 1.8 - 1.11
+* Python 3.5, 3.6
+* Django CMS 3.5, 3.6
+* Django 1.11
 
 
 .. |PyPI Version| image:: http://img.shields.io/pypi/v/aldryn-events.svg

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,14 +22,14 @@ from .forms import EventAdminForm
 
 class EventAdmin(AllTranslationsMixin, FrontendEditableAdminMixin, PlaceholderAdminMixin, TranslatableAdmin):
     form = EventAdminForm
-    search_fields = ('translations__title', )
+    search_fields = ('translations__title',)
     list_display = (
         'title', 'start_date', 'start_time', 'end_date', 'end_time',
         'location', 'is_published', 'app_config',
     )
-    list_editable = ('is_published', 'app_config', )
-    list_filter = ('is_published', 'app_config', )
-    filter_horizontal = ('event_coordinators', )
+    list_editable = ('is_published', 'app_config',)
+    list_filter = ('is_published', 'app_config',)
+    filter_horizontal = ('event_coordinators',)
     date_hierarchy = 'start_date'
     frontend_editable_fields = ('title', 'short_description', 'location')
 
@@ -80,13 +79,13 @@ class RegistrationAdmin(TablibAdmin if TablibAdmin is not None
     # https://github.com/joshourisman/django-tablib/issues/43
     formats = ['xls', 'csv', 'html']
     list_display = ('first_name', 'last_name', 'event')
-    list_filter = ('event', )
+    list_filter = ('event',)
     date_hierarchy = 'created_at'
 
 
 class EventConfigAdmin(PlaceholderAdminMixin, AllTranslationsMixin, BaseAppHookConfig, TranslatableAdmin):
     def get_config_fields(self):
-        return ('app_title', 'latest_first', 'config.show_ongoing_first', )
+        return ('app_title', 'latest_first', 'config.show_ongoing_first',)
 
 
 admin.site.register(Event, EventAdmin)

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 from distutils.version import LooseVersion
 from cms import __version__ as cms_string_version
 
@@ -14,7 +13,6 @@ def noop_gettext(s):
 
 
 gettext = noop_gettext
-
 
 HELPER_SETTINGS = {
     'TIME_ZONE': 'UTC',
