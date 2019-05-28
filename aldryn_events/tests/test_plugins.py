@@ -5,7 +5,10 @@ import datetime
 from cms import api
 from cms.models import Placeholder
 from cms.utils.i18n import force_language
-from django.core.urlresolvers import reverse, NoReverseMatch
+try:
+    from django.core.urlresolvers import reverse, NoReverseMatch
+except ImportError:
+    from django.urls import reverse, NoReverseMatch
 from django.core.cache import cache
 from django.utils.encoding import force_text
 
@@ -203,10 +206,8 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
         plugin_de = api.add_plugin(
             ph, 'EventListCMSPlugin', 'de', app_config=self.app_config,
         )
-        plugin_en.events = [event1, event2]
-        plugin_en.save()
-        plugin_de.events = [event1]
-        plugin_de.save()
+        plugin_en.events.set([event1, event2])
+        plugin_de.events.set([event1])
         page.publish('en')
         page.publish('de')
 
@@ -231,8 +232,7 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
 
     def test_event_list_plugin_languages(self):
         def populate_event_list_plugin(plugin):
-            plugin.events = [self.create_obj_with_translation()]
-            plugin.save()
+            plugin.events.set([self.create_obj_with_translation()])
             return plugin
 
         self._test_plugin_languages(
@@ -609,7 +609,7 @@ class TestEventListPluginFallback(LanguageFallbackMixin, EventBaseTestCase):
         plugin_en = api.add_plugin(
             ph, 'EventListCMSPlugin', 'en', app_config=self.app_config,
         )
-        plugin_en.events = [event_de]
+        plugin_en.events.set([event_de])
         root_page.publish('en')
         with force_language('en'):
             response = self.client.get(root_page.get_absolute_url())
@@ -626,7 +626,7 @@ class TestEventListPluginFallback(LanguageFallbackMixin, EventBaseTestCase):
         plugin_en = api.add_plugin(
             ph, 'EventListCMSPlugin', 'en', app_config=self.app_config,
         )
-        plugin_en.events = [event_de]
+        plugin_en.events.set([event_de])
         root_page.publish('en')
         with force_language('en'):
             response = self.client.get(root_page.get_absolute_url())

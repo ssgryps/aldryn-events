@@ -5,7 +5,10 @@ import mock
 
 from django.conf import settings
 from django.core import mail
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:
+    from django.urls import reverse
 
 from importlib import import_module
 from cms import api

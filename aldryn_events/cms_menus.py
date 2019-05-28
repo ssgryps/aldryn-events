@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
-from django.core.urlresolvers import NoReverseMatch
+try:
+    from django.core.urlresolvers import NoReverseMatch
+except ImportError:
+    from django.urls import NoReverseMatch
 from django.utils.translation import (
     get_language_from_request,
     ugettext_lazy as _,
