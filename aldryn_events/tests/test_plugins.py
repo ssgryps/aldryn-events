@@ -23,7 +23,7 @@ from aldryn_events.utils import is_valid_namespace
 def calendar_url(year, month, language, namespace):
     with force_language(language):
         url = reverse(
-            '{0}:get-calendar-dates'.format(namespace),
+            '{}:get-calendar-dates'.format(namespace),
             kwargs={'year': year, 'month': month}
         )
     return url
@@ -48,7 +48,7 @@ class TestPluginLanguageHelperMixin(object):
         # 'en' is the default language for our tests
         language_code = 'en'
         plugin_page = api.create_page(
-            'Events plugins page {0}'.format(language_code), self.template,
+            'Events plugins page {}'.format(language_code), self.template,
             language_code, parent=self.root_page,
         )
         ph = plugin_page.placeholders.get(slot='content')
@@ -135,7 +135,7 @@ class EventConfigPlaceholdersTestCase(EventBaseTestCase):
                 continue
 
             with force_language('en'):
-                apphook_url = reverse('{0}:events_list'.format(cfg.namespace))
+                apphook_url = reverse('{}:events_list'.format(cfg.namespace))
             response = self.client.get(apphook_url)
 
             # test own content
@@ -160,13 +160,13 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
         """ create event based on a num in both languages """
         text, text_de = 'event', 'ereignis'
         event = self.create_event(
-            title='{0} {1} en'.format(text, num),
-            slug='{0}-{1}-en'.format(text, num),
+            title='{} {} en'.format(text, num),
+            slug='{}-{}-en'.format(text, num),
             start_date=start_date, end_date=end_date,
             publish_at=publish_at,
             de={
-                'title': '{0} {1} de'.format(text_de, num),
-                'slug': '{0}-{1}-de'.format(text_de, num)
+                'title': '{} {} de'.format(text_de, num),
+                'slug': '{}-{}-de'.format(text_de, num)
             }
         )
         return Event.objects.language('en').get(pk=event.pk)
@@ -304,19 +304,19 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
         for i in range(1, 6):
             for lang in ['en', 'de']:
                 text = 'event' if lang == 'en' else 'ereignis'
-                name = '{0} {1} {2}'.format(text, i, lang)
-                expected_slug = '{0}-{1}-{2}/'.format(text, i, lang)
+                name = '{} {} {}'.format(text, i, lang)
+                expected_slug = '{}-{}-{}/'.format(text, i, lang)
                 apphook_url = self.get_apphook_url(language=lang)
-                url = '{0}{1}'.format(apphook_url, expected_slug)
+                url = '{}{}'.format(apphook_url, expected_slug)
                 self.assertIn(
                     name, rendered[lang],
-                    'Title "{0}" not found in rendered plugin for '
-                    'language "{1}".'.format(name, lang)
+                    'Title "{}" not found in rendered plugin for '
+                    'language "{}".'.format(name, lang)
                 )
                 self.assertIn(
                     url, rendered[lang],
-                    'URL "{0}" not found in rendered plugin for '
-                    'language "{1}".'.format(url, lang)
+                    'URL "{}" not found in rendered plugin for '
+                    'language "{}".'.format(url, lang)
                 )
 
         self.assertNotIn(
@@ -459,19 +459,19 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
         for i in range(1, 6):
             for lang in ['en', 'de']:
                 text = 'event' if lang == 'en' else 'ereignis'
-                name = '{0} {1} {2}'.format(text, i, lang)
-                expected_slug = '{0}-{1}-{2}/'.format(text, i, lang)
+                name = '{} {} {}'.format(text, i, lang)
+                expected_slug = '{}-{}-{}/'.format(text, i, lang)
                 apphooh_url = self.get_apphook_url(language=lang)
-                url = '{0}{1}'.format(apphooh_url, expected_slug)
+                url = '{}{}'.format(apphooh_url, expected_slug)
                 self.assertIn(
                     name, rendered[lang],
-                    'Title "{0}" not found in rendered plugin for '
-                    'language "{1}".'.format(name, lang)
+                    'Title "{}" not found in rendered plugin for '
+                    'language "{}".'.format(name, lang)
                 )
                 self.assertIn(
                     url, rendered[lang],
-                    'URL "{0}" not found in rendered plugin for '
-                    'language "{1}".'.format(url, lang)
+                    'URL "{}" not found in rendered plugin for '
+                    'language "{}".'.format(url, lang)
                 )
 
         self.assertNotIn(
@@ -548,7 +548,7 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
                 namespace = plugin.app_config.namespace
                 apphook_urls[language] = self.get_apphook_url(
                     namespace=namespace)
-                plugin_url = "{0}?plugin_pk={1}".format(
+                plugin_url = "{}?plugin_pk={}".format(
                     calendar_url(2014, 2, language, namespace), plugin.pk)
                 rendered[language] = {
                     'p1': force_text(self.client.get(page_url).content),
@@ -681,7 +681,7 @@ class TestCalendarPluginFallback(LanguageFallbackMixin, EventBaseTestCase):
             'month': date.month,
             'day': date.day}
         url = reverse(
-            '{0}:events_list-by-day'.format(app_config.namespace),
+            '{}:events_list-by-day'.format(app_config.namespace),
             kwargs=kwargs)
         return url
 

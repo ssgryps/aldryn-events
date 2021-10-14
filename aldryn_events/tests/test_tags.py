@@ -90,7 +90,7 @@ class TagsTestCase(EventBaseTestCase):
         self.assertEqual('10', table.find('td.today').text())
         expected_days = (13, 14, 15, 22, 23, 24, 25, 26, 27)
         for position, day in enumerate(expected_days):
-            event_url = '{0}2015/1/{1}/'.format(page_url_en, day)
+            event_url = '{}2015/1/{}/'.format(page_url_en, day)
             rendered_url = links[position].attrib['href']
             self.assertEqual(event_url, rendered_url)
 
@@ -116,6 +116,6 @@ class TagsTestCase(EventBaseTestCase):
         for position, day in enumerate(expected_days):
             # page url may vary depending on fallback settings, check only
             # against the date.
-            event_url = '/2015/1/{0}/'.format(day)
+            event_url = '/2015/1/{}/'.format(day)
             rendered_url = links[position].attrib['href']
             self.assertGreater(rendered_url.find(event_url), -1)

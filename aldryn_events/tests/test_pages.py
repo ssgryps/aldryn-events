@@ -52,7 +52,7 @@ class EventPagesTestCase(EventBaseTestCase):
             apphook_url = self.get_apphook_url(language='en')
             self.assertEqual(
                 event.get_absolute_url(),
-                '{0}open-air/'.format(apphook_url)
+                '{}open-air/'.format(apphook_url)
             )
             response = self.client.get(event.get_absolute_url())
             self.assertContains(response, event.title)
@@ -60,7 +60,7 @@ class EventPagesTestCase(EventBaseTestCase):
         with switch_language(event, 'de'):
             apphook_url = self.get_apphook_url(language='de')
             self.assertEqual(
-                event.get_absolute_url(), '{0}im-freien/'.format(apphook_url)
+                event.get_absolute_url(), '{}im-freien/'.format(apphook_url)
             )
             response = self.client.get(event.get_absolute_url())
             self.assertContains(response, event.title)
@@ -360,12 +360,12 @@ class RegistrationTestCase(EventBaseTestCase):
         self.assertEqual(len(mail.outbox), 2)
         self.assertEqual(
             mail.outbox[0].subject,
-            'Thank you for signing up to "{0}"'.format(event.title)
+            'Thank you for signing up to "{}"'.format(event.title)
         )
         self.assertEqual(['myemail@gmail.com'], mail.outbox[0].recipients())
         self.assertEqual(
             mail.outbox[1].subject,
-            'New registration for "{0}"'.format(event.title)
+            'New registration for "{}"'.format(event.title)
         )
         self.assertEqual(['theboss@gmail.com'], mail.outbox[1].recipients())
 
@@ -403,7 +403,7 @@ class RegistrationTestCase(EventBaseTestCase):
         )
         with force_language('en'):
             reset_url = reverse(
-                '{0}:events_registration_reset'.format(
+                '{}:events_registration_reset'.format(
                     self.app_config.namespace),
                 kwargs={'slug': event.slug},
                 current_app=self.app_config.namespace

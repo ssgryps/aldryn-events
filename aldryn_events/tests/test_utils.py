@@ -186,6 +186,6 @@ class EventTestCase(EventBaseTestCase):
         if failed:
             msg = 'Failed to get correct amount of dates for: {0}'
             error_appears = '; '.join(
-                ['{0} returned {1} days'.format(date, days)
+                ['{} returned {} days'.format(date, days)
                  for date, days in failed])
             self.assertTrue(False, msg.format(error_appears))

@@ -118,7 +118,7 @@ class Event(TranslatedAutoSlugifyMixin,
 
     def __str__(self):
         # since we now have app configs, it is pretty handy to display them
-        return '{0} ({1})'.format(
+        return '{} ({})'.format(
             self.get_title(),
             getattr(self.app_config, 'app_title', self.app_config.namespace))
 
@@ -202,7 +202,7 @@ class Event(TranslatedAutoSlugifyMixin,
 
     def get_url_name(self):
         try:
-            url_name = '{0}:events_detail'.format(self.app_config.namespace)
+            url_name = '{}:events_detail'.format(self.app_config.namespace)
         except AttributeError:
             url_name = 'aldryn_events:events_detail'
 
@@ -224,12 +224,12 @@ class Event(TranslatedAutoSlugifyMixin,
                 language = slug_lang
 
         if self.app_config_id and self.app_config.namespace:
-            namespace = '{0}:'.format(self.app_config.namespace)
+            namespace = '{}:'.format(self.app_config.namespace)
         else:
             namespace = ''
 
         with override(language):
-            return reverse('{0}events_detail'.format(namespace), kwargs=kwargs)
+            return reverse('{}events_detail'.format(namespace), kwargs=kwargs)
 
 
 @python_2_unicode_compatible

@@ -46,7 +46,7 @@ def fallback_aware_namespace_url(context, view_name, namespace, **kwargs):
     for lang in valid_languages:
         with force_language(lang):
             try:
-                url = reverse('{0}:{1}'.format(namespace, view_name),
+                url = reverse('{}:{}'.format(namespace, view_name),
                               kwargs=kwargs)
             except NoReverseMatch:
                 pass
@@ -90,7 +90,7 @@ def build_calendar_context(year, month, language, namespace, site_id=None):
         'current_date': current_date,
         'last_month': current_date - timedelta(days=1),
         'next_month': (current_date + timedelta(days=31)).replace(day=1),
-        'label': "{0} {1}".format(MONTHS.get(int(month)), year),
+        'label': "{} {}".format(MONTHS.get(int(month)), year),
         'namespace': namespace
     }
 

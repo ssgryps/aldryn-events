@@ -164,7 +164,7 @@ class TestEventViews(EventBaseTestCase):
             self.assertNotContains(response, event_urls[index])
 
     def test_event_list_view_returns_200(self):
-        url = reverse("{0}:events_list".format(self.app_config.namespace))
+        url = reverse("{}:events_list".format(self.app_config.namespace))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
@@ -177,7 +177,7 @@ class TestEventViews(EventBaseTestCase):
         with force_language('en'):
             event = self.create_event(**event_data)
             event_url = event.get_absolute_url()
-            view_url = reverse('{0}:events_list-by-day'.format(
+            view_url = reverse('{}:events_list-by-day'.format(
                 self.app_config.namespace), kwargs=kwargs)
         response = self.client.get(view_url)
         self.assertContains(response, event.get_title())
@@ -195,7 +195,7 @@ class TestEventViews(EventBaseTestCase):
         with force_language('en'):
             event = self.create_event(**event_data)
             event_url = event.get_absolute_url()
-            view_url = reverse('{0}:events_list-by-month'.format(
+            view_url = reverse('{}:events_list-by-month'.format(
                 self.app_config.namespace), kwargs=kwargs)
         response = self.client.get(view_url)
         self.assertContains(response, event.get_title())
@@ -213,7 +213,7 @@ class TestEventViews(EventBaseTestCase):
         with force_language('en'):
             event = self.create_event(**event_data)
             event_url = event.get_absolute_url()
-            view_url = reverse('{0}:events_list-by-year'.format(
+            view_url = reverse('{}:events_list-by-year'.format(
                 self.app_config.namespace), kwargs=kwargs)
         response = self.client.get(view_url)
         self.assertContains(response, event.get_title())
@@ -252,7 +252,7 @@ class TestEventViews(EventBaseTestCase):
         kwargs4 = self.get_list_view_kwargs(*self.list_view_year_month,
                                             day='18')
 
-        view_name = '{0}:events_list-by-day'.format(self.app_config.namespace)
+        view_name = '{}:events_list-by-day'.format(self.app_config.namespace)
         with force_language('en'):
             events_urls = [event.get_absolute_url() for event in events_list]
             view_url1 = reverse(view_name, kwargs=kwargs1)
@@ -300,7 +300,7 @@ class TestEventViews(EventBaseTestCase):
         kwargs2 = self.get_list_view_kwargs('2014', '01')
         kwargs3 = self.get_list_view_kwargs('2015', '11')
 
-        view_name = '{0}:events_list-by-month'.format(
+        view_name = '{}:events_list-by-month'.format(
             self.app_config.namespace)
         with force_language('en'):
             events_urls = [event.get_absolute_url() for event in events_list]
@@ -388,7 +388,7 @@ class TestEventViews(EventBaseTestCase):
         kwargs2 = {'year': '2015'}
         kwargs3 = {'year': '2016'}
 
-        view_name = '{0}:events_list-by-year'.format(self.app_config.namespace)
+        view_name = '{}:events_list-by-year'.format(self.app_config.namespace)
         with force_language('en'):
             events_urls = [event.get_absolute_url() for event in events_list]
             view_url_2014 = reverse(view_name, kwargs=kwargs1)

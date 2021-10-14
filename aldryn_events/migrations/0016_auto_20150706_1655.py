@@ -21,7 +21,7 @@ def create_missing_placeholders(apps, schema_editor):
             configs = list(configs_qs)
     except ProgrammingError:
         # most likely we also need the latest Placeholder model
-        NewEventsConfig = django_apps.get_model('aldryn_events.{0}'.format(
+        NewEventsConfig = django_apps.get_model('aldryn_events.{}'.format(
             EventsConfig.__name__))
         with transaction.atomic():
             configs = NewEventsConfig.objects.filter()
@@ -33,7 +33,7 @@ def create_missing_placeholders(apps, schema_editor):
                 # skip other fields.
                 continue
             placeholder_name = field.name
-            placeholder_id_name = '{0}_id'.format(placeholder_name)
+            placeholder_id_name = '{}_id'.format(placeholder_name)
             placeholder_id = getattr(cfg, placeholder_id_name, None)
             if placeholder_id is not None:
                 # do not process if it has a reference to placeholder field.

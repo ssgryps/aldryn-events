@@ -167,7 +167,7 @@ class AppConfigPluginFormMixin(object):
             'published, to use them - publish pages to which they are '
             'attached.')
         not_published_namespaces = '; '.join(not_published)
-        full_message = '{0} \n<br/>{1}'.format(msg, not_published_namespaces)
+        full_message = '{} \n<br/>{}'.format(msg, not_published_namespaces)
         # update help text
         if (not self.fields['app_config'].help_text or
                 len(self.fields['app_config'].help_text.strip()) < 1):

@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='eventsconfigtranslation',
-            unique_together=set([('language_code', 'master')]),
+            unique_together={('language_code', 'master')},
         ),
         migrations.AddField(
             model_name='eventcalendarplugin',

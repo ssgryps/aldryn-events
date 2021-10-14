@@ -264,7 +264,7 @@ class ResetEventRegistration(AppConfigMixin, FormView):
         return super(ResetEventRegistration, self).form_valid(form)
 
     def get_success_url(self):
-        url_name = '{0}:events_detail'.format(self.namespace)
+        url_name = '{}:events_detail'.format(self.namespace)
         return reverse(
             url_name, kwargs={'slug': self.event.slug},
             current_app=self.namespace

@@ -113,7 +113,7 @@ def send_user_confirmation_email(registration, language):
     ctx = {
         'event_name': event.title,
         'first_name': registration.first_name,
-        'event_url': "http://%s%s" % (
+        'event_url': "http://{}{}".format(
             Site.objects.get_current(), event.get_absolute_url()
         ),
     }
@@ -134,10 +134,10 @@ def send_manager_confirmation_email(registration, language, emails):
     ctx = {
         'event_name': event.title,
         'first_name': registration.first_name,
-        'event_url': "http://%s%s" % (
+        'event_url': "http://{}{}".format(
             Site.objects.get_current(), event.get_absolute_url()
         ),
-        'registration_admin_url': "http://%s%s" % (
+        'registration_admin_url': "http://{}{}".format(
             Site.objects.get_current(),
             reverse('admin:aldryn_events_registration_change',
                     args=[str(registration.pk)])
@@ -297,7 +297,7 @@ def is_valid_namespace(namespace):
     Returns True or False.
     """
     try:
-        reverse('{0}:events_list'.format(namespace))
+        reverse('{}:events_list'.format(namespace))
     except (NoReverseMatch, AttributeError):
         return False
     return True

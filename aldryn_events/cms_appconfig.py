@@ -56,6 +56,6 @@ class EventsConfig(TranslatableModel, AppHookConfig):
         # use app_title if it was provided, otherwise use namespace
         title = getattr(self, 'app_title', self.namespace)
         if self.cmsapp:
-            return '{0} / {1}'.format(self.cmsapp.name, title)
+            return '{} / {}'.format(self.cmsapp.name, title)
         else:
-            return '{0} / {1}'.format(self.type, title)
+            return '{} / {}'.format(self.type, title)

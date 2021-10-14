@@ -32,7 +32,7 @@ class EventsToolbar(CMSToolbar):
             self, 'current_lang', get_language_from_request(
                 self.request, check_path=True))
         with force_language(language):
-            return reverse('{0}:events_list'.format(
+            return reverse('{}:events_list'.format(
                 event.app_config.namespace))
 
     def get_app_config(self, config_model):
@@ -87,7 +87,7 @@ class EventsToolbar(CMSToolbar):
                 if add_event_perm:
                     url = admin_reverse('aldryn_events_event_add')
                     # preselect the current app config
-                    url = '{0}?app_config={1}'.format(url, config.pk)
+                    url = '{}?app_config={}'.format(url, config.pk)
                     menu.add_modal_item(_('Add event'), url=url)
 
                 if chg_event_perm and event:

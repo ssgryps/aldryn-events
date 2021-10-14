@@ -188,7 +188,7 @@ class CalendarPlugin(NameSpaceCheckMixin, AdjustableCacheMixin,
         context['current_date'] = current_date
         context['last_month'] = current_date + datetime.timedelta(days=-1)
         context['next_month'] = current_date + datetime.timedelta(days=35)
-        context['calendar_label'] = '%s %s' % (MONTHS.get(int(month)), year)
+        context['calendar_label'] = '{} {}'.format(MONTHS.get(int(month)), year)
         context['calendar_namespace'] = namespace
         return context
 

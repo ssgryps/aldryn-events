@@ -254,9 +254,9 @@ class EventBaseTestCase(EventTestCaseSetupMixin, TransactionTestCase):
         if num is None:
             num = random.randint(0, 9999999)
         defaut_event_values = {
-            'title': 'Default event test {0}'.format(num),
+            'title': 'Default event test {}'.format(num),
             'app_config': self.app_config,
-            'short_description': 'Lorem ipsum blah blah {0}'.format(num),
+            'short_description': 'Lorem ipsum blah blah {}'.format(num),
         }
         defaut_event_values.update(date_values)
         return defaut_event_values
@@ -274,8 +274,8 @@ class EventBaseTestCase(EventTestCaseSetupMixin, TransactionTestCase):
         # if language is not provided then leave control over language to
         # caller
         if language is None:
-            return reverse('{0}:{1}'.format(namespace, DEFAULT_VIEW))
+            return reverse('{}:{}'.format(namespace, DEFAULT_VIEW))
         # otherwise force it for cases with parler switch_language which
         # seems to affect only parler internals
         with force_language(language):
-            return reverse('{0}:{1}'.format(namespace, DEFAULT_VIEW))
+            return reverse('{}:{}'.format(namespace, DEFAULT_VIEW))
