@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
 
 from appconf import AppConf
+from django.utils.translation import gettext_lazy as _
 
 
 class EventsAppConf(AppConf):

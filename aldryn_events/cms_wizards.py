@@ -2,7 +2,6 @@
 
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
 from cms.api import add_plugin
 from cms.utils import permissions
@@ -18,6 +17,7 @@ from parler.forms import TranslatableModelForm
 from .cms_appconfig import EventsConfig
 from .models import Event
 from .utils import is_valid_namespace
+from django.utils.translation import gettext_lazy as _
 
 
 class EventWizard(Wizard):

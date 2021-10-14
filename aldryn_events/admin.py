@@ -2,7 +2,6 @@
 
 
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
 
 from aldryn_apphooks_config.admin import BaseAppHookConfig
 from cms.admin.placeholderadmin import PlaceholderAdminMixin, FrontendEditableAdminMixin
@@ -18,6 +17,7 @@ from aldryn_translation_tools.admin import AllTranslationsMixin
 from .cms_appconfig import EventsConfig
 from .models import Event, EventCoordinator, Registration
 from .forms import EventAdminForm
+from django.utils.translation import gettext_lazy as _
 
 
 class EventAdmin(AllTranslationsMixin, FrontendEditableAdminMixin, PlaceholderAdminMixin, TranslatableAdmin):

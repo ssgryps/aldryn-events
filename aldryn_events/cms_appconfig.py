@@ -2,12 +2,12 @@
 
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
 
 from aldryn_apphooks_config.models import AppHookConfig
 from cms.models.fields import PlaceholderField
 from parler.models import TranslatableModel, TranslatedFields
+from django.utils.translation import gettext_lazy as _
+from six import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible

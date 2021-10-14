@@ -7,9 +7,7 @@ try:
 except ImportError:
     from django.urls import reverse
 from django.utils.translation import (
-    ugettext_lazy as _,
-    get_language_from_request,
-)
+    gettext_lazy as _, get_language_from_request)
 
 from aldryn_apphooks_config.utils import get_app_instance
 from aldryn_translation_tools.utils import (

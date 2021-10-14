@@ -10,7 +10,6 @@ try:
 except ImportError:
     from django.urls import reverse, NoReverseMatch
 from django.core.cache import cache
-from django.utils.encoding import force_text
 
 import mock
 from aldryn_events.models import Event, EventsConfig
@@ -18,6 +17,7 @@ from aldryn_events.tests.base import (
     EventBaseTestCase, tz_datetime
 )
 from aldryn_events.utils import is_valid_namespace
+from django.utils.encoding import force_str
 
 
 def calendar_url(year, month, language, namespace):
@@ -551,8 +551,8 @@ class EventPluginsTestCase(TestPluginLanguageHelperMixin, EventBaseTestCase):
                 plugin_url = "{}?plugin_pk={}".format(
                     calendar_url(2014, 2, language, namespace), plugin.pk)
                 rendered[language] = {
-                    'p1': force_text(self.client.get(page_url).content),
-                    'p2': force_text(self.client.get(plugin_url).content),
+                    'p1': force_str(self.client.get(page_url).content),
+                    'p2': force_str(self.client.get(plugin_url).content),
                 }
 
         # expected html patterns
