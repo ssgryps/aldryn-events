@@ -228,6 +228,9 @@ class Event(TranslatedAutoSlugifyMixin,
         with override(language):
             return reverse('{0}events_detail'.format(namespace), kwargs=kwargs)
 
+    def get_draft_url(self):
+        return self.get_absolute_url(language=None)
+
 
 @python_2_unicode_compatible
 class EventCoordinator(models.Model):
