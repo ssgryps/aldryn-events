@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.urls import NoReverseMatch
 from django.utils import timezone
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import override, ugettext_lazy as _, ugettext
@@ -228,6 +229,8 @@ class Event(TranslatedAutoSlugifyMixin,
         with override(language):
             return reverse('{0}events_detail'.format(namespace), kwargs=kwargs)
 
+    def get_draft_url(self):
+        raise NoReverseMatch
 
 @python_2_unicode_compatible
 class EventCoordinator(models.Model):
