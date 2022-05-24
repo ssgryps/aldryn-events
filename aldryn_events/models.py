@@ -7,6 +7,7 @@ try:
 except ImportError:
     from django.urls import reverse
 from django.db import models
+from django.urls import NoReverseMatch
 from django.utils import timezone
 from django.utils.translation import gettext, gettext_lazy as _, override
 
@@ -229,6 +230,9 @@ class Event(TranslatedAutoSlugifyMixin,
 
         with override(language):
             return reverse('{}events_detail'.format(namespace), kwargs=kwargs)
+
+    def get_draft_url(self):
+        raise NoReverseMatch
 
 
 class EventCoordinator(models.Model):
